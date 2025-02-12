@@ -3,6 +3,9 @@
 // Array para armazenar os nomes dos amigos
 let amigos = [];
 
+// Array para armazenar os nomes já sorteados
+let sorteados = [];
+
 // Função para adicionar um amigo à lista
 function adicionarAmigo() {
     const inputAmigo = document.getElementById('amigo');
@@ -39,8 +42,30 @@ function sortearAmigo() {
     const resultado = document.getElementById('resultado');
     resultado.innerHTML = ""; // Limpa o resultado anterior
 
-    const amigoSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+    let amigoSorteado;
 
+    // Sorteia até encontrar um nome válido
+    do {
+        amigoSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+
+        // Verifica se o nome sorteado já foi sorteado antes
+        if (sorteados.includes(amigoSorteado)) {
+            continue; // Se já foi sorteado, tenta novamente
+        }
+
+        // Verifica se o nome sorteado é o próprio usuário
+        if (amigoSorteado === "Seu Nome Aqui") { // Substitua "Seu Nome Aqui" pelo nome do usuário
+            alert("Apareceu o seu próprio nome? Sorteando novamente...");
+            continue; // Sorteia novamente
+        }
+
+        // Adiciona o nome sorteado ao array de sorteados
+        sorteados.push(amigoSorteado);
+        break; // Sai do loop quando um nome válido é encontrado
+
+    } while (true);
+
+    // Exibe o resultado do sorteio
     const itemResultado = document.createElement('li');
     itemResultado.textContent = `Amigo sorteado: ${amigoSorteado}`;
     resultado.appendChild(itemResultado);
