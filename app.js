@@ -1,8 +1,7 @@
 //O principal objetivo deste desafio é fortalecer suas habilidades em lógica de programação. Aqui você deverá desenvolver a lógica para resolver o problema.
 
 // Array para armazenar os nomes dos amigos
-let amigos = []; // Cria um array vazio chamado amigos. 
-// Esse array será usado para armazenar os nomes dos amigos que o usuário digitar.
+let amigos = [];
 
 // Função para adicionar um amigo à lista
 function adicionarAmigo() {
